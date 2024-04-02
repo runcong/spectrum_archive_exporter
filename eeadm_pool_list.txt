@@ -1,0 +1,3 @@
+Pool Name      Usable(TB)  Used(TB)  Available(TB)  Reclaimable%  Tapes  Type  Library    Node Group
+gpfsBelfer001      4520.6    3085.2         1435.3            0%    232  3592  BelferLib  G0        
+gpfsPrice001       5241.5    3219.0         1870.3            0%    276  3592  PriceLib   G1        

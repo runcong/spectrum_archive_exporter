@@ -1,0 +1,17 @@
+Drive S/N     Status  State        Type    Role  Library    Node ID  Tape      Node Group  Task ID
+00000783D23A  ok      mounted      TS1160   mrg  BelferLib  26       B00001JE  G0          -      
+00000783D35A  ok      mounted      TS1160   mrg  BelferLib  27       B00053JE  G0          -      
+00000783D42A  ok      mounted      TS1160   mrg  BelferLib  26       B00189JE  G0          -      
+00000783D44A  ok      mounted      TS1160   mrg  BelferLib  27       B00223JE  G0          -      
+00000783D46A  ok      mounted      TS1160   mrg  BelferLib  26       B00044JE  G0          -      
+00000783D4AA  ok      mounted      TS1160   mrg  BelferLib  27       B00022JE  G0          -      
+00000783D4EA  ok      mounted      TS1160   mrg  BelferLib  26       B00206JE  G0          -      
+00000783D51A  ok      mounted      TS1160   mrg  BelferLib  27       B00207JE  G0          -      
+00000783D21A  ok      not_mounted  TS1160   mrg  PriceLib   28       -         G1          -      
+00000783D24A  ok      mounted      TS1160   mrg  PriceLib   29       A00416JE  G1          -      
+00000783D25A  ok      mounted      TS1160   mrg  PriceLib   28       A00419JE  G1          -      
+00000783D40A  ok      mounted      TS1160   mrg  PriceLib   29       A00420JE  G1          -      
+00000783D41A  ok      mounted      TS1160   mrg  PriceLib   28       A00422JE  G1          -      
+00000783D43A  ok      mounted      TS1160   mrg  PriceLib   29       A00418JE  G1          -      
+00000783D48A  ok      mounted      TS1160   mrg  PriceLib   28       A00415JE  G1          -      
+00000783D4CA  ok      mounted      TS1160   mrg  PriceLib   29       A00417JE  G1          -      
