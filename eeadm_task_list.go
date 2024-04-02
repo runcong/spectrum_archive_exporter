@@ -14,7 +14,6 @@ var specturm_archive_task_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 }, []string{"status"})
 
 func task_status() {
-	// cmd := exec.Command("cat", "eeadm_task_list.txt")
 	cmd := exec.Command("eeadm", "task", "list")
 	output, err := cmd.Output()
 	status_running := 0
@@ -54,5 +53,4 @@ func task_status() {
 	specturm_archive_task_status.WithLabelValues("running").Set(float64(status_running))
 	specturm_archive_task_status.WithLabelValues("failed").Set(float64(status_failed))
 	specturm_archive_task_status.WithLabelValues("completed").Set(float64(status_completed))
-	// fmt.Print(len(lines))
 }

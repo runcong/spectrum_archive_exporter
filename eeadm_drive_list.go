@@ -14,7 +14,6 @@ var specturm_archive_drive_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 }, []string{"status"})
 
 func drive_status() {
-	// cmd := exec.Command("cat", "eeadm_drive_list.txt")
 	cmd := exec.Command("eeadm", "drive", "list")
 	output, err := cmd.Output()
 	status_nonok := 0
@@ -44,5 +43,4 @@ func drive_status() {
 
 	specturm_archive_drive_status.WithLabelValues("ok").Set(float64(len(lines) - status_nonok - 1))
 	specturm_archive_drive_status.WithLabelValues("non-ok").Set(float64(status_nonok))
-	// fmt.Print(len(lines))
 }

@@ -14,8 +14,6 @@ var specturm_archive_tape_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 }, []string{"status"})
 
 func tape_status() {
-	// Execute the command "cat eeadm_tape_list.txt"
-	// cmd := exec.Command("cat", "eeadm_tape_list.txt")
 	cmd := exec.Command("eeadm", "tape", "list")
 	output, err := cmd.Output()
 	status_nonok := 0
@@ -50,10 +48,6 @@ func tape_status() {
 			}
 		}
 
-		// status := strings.Fields(line)[1]
-
-		// Print the tape status
-		// fmt.Println("Tape status:", status)
 	}
 
 	specturm_archive_tape_status.WithLabelValues("ok").Set(float64(len(lines) - status_nonok - 1))
@@ -61,7 +55,4 @@ func tape_status() {
 	specturm_archive_tape_status.WithLabelValues("error").Set(float64(status_error))
 	specturm_archive_tape_status.WithLabelValues("degraded").Set(float64(status_degraded))
 
-	// fmt.Print("Number of tapes with status non-OK: ", status_nonok, "\n")
-	// fmt.Print("Number of tapes with status error: ", status_error, "\n")
-	// fmt.Print("Number of tapes with status degraded: ", status_degraded, "\n")
 }
