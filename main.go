@@ -22,6 +22,7 @@ func registerMetrics() {
 	// reg.MustRegister(myGauge)
 	// reg.MustRegister(myCounter)
 	// reg.MustRegister(diskSizeGauge)
+	reg.MustRegister(specturm_archive_node_status)
 	reg.MustRegister(specturm_archive_tape_status)
 	reg.MustRegister(specturm_archive_drive_status)
 	reg.MustRegister(specturm_archive_pool_used)
@@ -39,6 +40,7 @@ func main() {
 	http.Handle("/metrics", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// updateDiskSizeMetric()
 		// updateMyCounter()
+		node_status()
 		tape_status()
 		drive_status()
 		pool_status()

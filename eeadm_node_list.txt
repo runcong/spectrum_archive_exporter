@@ -1,0 +1,5 @@
+Node ID  State      Node IP        Drives  Ctrl Node    Library    Node Group  Host Name   
+26       available  10.56.144.43        4  yes(active)  BelferLib  G0          ibm43-hs.hs 
+27       available  10.56.144.44        4  yes          BelferLib  G0          ibm44-hs.hs 
+28       available  10.56.144.143       4  yes          PriceLib   G1          ibm143-hs.hs
+29       available  10.56.144.144       4  yes(active)  PriceLib   G1          ibm144-hs.hs

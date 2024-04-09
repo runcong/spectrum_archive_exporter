@@ -15,8 +15,8 @@ var specturm_archive_tape_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 
 func tape_status() {
 	// Execute the command "cat eeadm_tape_list.txt"
-	// cmd := exec.Command("cat", "eeadm_tape_list.txt")
-	cmd := exec.Command("eeadm", "tape", "list")
+	cmd := exec.Command("cat", "eeadm_tape_list.txt")
+	// cmd := exec.Command("eeadm", "tape", "list")
 	output, err := cmd.Output()
 	status_nonok := 0
 	status_error := 0

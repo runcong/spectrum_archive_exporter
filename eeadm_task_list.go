@@ -14,8 +14,8 @@ var specturm_archive_task_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 }, []string{"status"})
 
 func task_status() {
-	// cmd := exec.Command("cat", "eeadm_task_list.txt")
-	cmd := exec.Command("eeadm", "task", "list")
+	cmd := exec.Command("cat", "eeadm_task_list.txt")
+	// cmd := exec.Command("eeadm", "task", "list")
 	output, err := cmd.Output()
 	status_running := 0
 	status_failed := 0

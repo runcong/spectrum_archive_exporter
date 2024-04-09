@@ -20,8 +20,8 @@ var specturm_archive_pool_available = prometheus.NewGaugeVec(prometheus.GaugeOpt
 }, []string{"pool_name"})
 
 func pool_status() {
-	// cmd := exec.Command("cat", "eeadm_pool_list.txt")
-	cmd := exec.Command("eeadm", "pool", "list")
+	cmd := exec.Command("cat", "eeadm_pool_list.txt")
+	// cmd := exec.Command("eeadm", "pool", "list")
 	output, err := cmd.Output()
 
 	if err != nil {
