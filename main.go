@@ -32,11 +32,11 @@ func main() {
 
 	// http.Handle("/metrics", promhttp.Handler())
 	http.Handle("/metrics", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		node_status()
-		tape_status()
-		drive_status()
-		pool_status()
-		task_status()
+		go node_status()
+		go tape_status()
+		go drive_status()
+		go pool_status()
+		go task_status()
 		promhttp.HandlerFor(reg, promhttp.HandlerOpts{}).ServeHTTP(w, r)
 	}))
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
