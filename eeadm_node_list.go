@@ -8,7 +8,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-var specturm_archive_node_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+var spectrum_archive_node_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_node_status",
 	Help: "Spectrum Archive Node Status (eeadm node list)",
 }, []string{"status", "node_name", "node_ip"})
@@ -36,7 +36,7 @@ func node_status() {
 			status := strings.Fields(line)[1]
 			node_name := strings.Fields(line)[7]
 			node_ip := strings.Fields(line)[2]
-			specturm_archive_node_status.WithLabelValues(status, node_name, node_ip).Set(0)
+			spectrum_archive_node_status.WithLabelValues(status, node_name, node_ip).Set(0)
 		}
 	}
 

@@ -9,12 +9,12 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-var specturm_archive_pool_used = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+var spectrum_archive_pool_used = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_pool_used",
 	Help: "Spectrum Archive Pool Used in TB (eeadm pool list)",
 }, []string{"pool_name"})
 
-var specturm_archive_pool_available = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+var spectrum_archive_pool_available = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_pool_available",
 	Help: "Spectrum Archive Pool Available in TB (eeadm pool list)",
 }, []string{"pool_name"})
@@ -55,8 +55,8 @@ func pool_status() {
 				continue
 			}
 
-			specturm_archive_pool_used.WithLabelValues(pool_name).Set(poolUsedFloat)
-			specturm_archive_pool_available.WithLabelValues(pool_name).Set(poolAvailableFloat)
+			spectrum_archive_pool_used.WithLabelValues(pool_name).Set(poolUsedFloat)
+			spectrum_archive_pool_available.WithLabelValues(pool_name).Set(poolAvailableFloat)
 		}
 	}
 

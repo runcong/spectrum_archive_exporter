@@ -8,7 +8,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-var specturm_archive_task_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+var spectrum_archive_task_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_task_status",
 	Help: "Spectrum Archive Task Status (eeadm task list)",
 }, []string{"status"})
@@ -49,8 +49,8 @@ func task_status() {
 		}
 	}
 
-	specturm_archive_task_status.WithLabelValues("non-running").Set(float64(len(lines) - status_running - 1))
-	specturm_archive_task_status.WithLabelValues("running").Set(float64(status_running))
-	specturm_archive_task_status.WithLabelValues("failed").Set(float64(status_failed))
-	specturm_archive_task_status.WithLabelValues("completed").Set(float64(status_completed))
+	spectrum_archive_task_status.WithLabelValues("non-running").Set(float64(len(lines) - status_running - 1))
+	spectrum_archive_task_status.WithLabelValues("running").Set(float64(status_running))
+	spectrum_archive_task_status.WithLabelValues("failed").Set(float64(status_failed))
+	spectrum_archive_task_status.WithLabelValues("completed").Set(float64(status_completed))
 }
