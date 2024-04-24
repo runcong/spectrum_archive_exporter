@@ -8,7 +8,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
-var specturm_archive_tape_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+var spectrum_archive_tape_status = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_tape_status",
 	Help: "Spectrum Archive Tape Status (eeadm tape list)",
 }, []string{"status"})
@@ -56,10 +56,10 @@ func tape_status() {
 		// fmt.Println("Tape status:", status)
 	}
 
-	specturm_archive_tape_status.WithLabelValues("ok").Set(float64(len(lines) - status_nonok - 1))
-	specturm_archive_tape_status.WithLabelValues("non-ok").Set(float64(status_nonok))
-	specturm_archive_tape_status.WithLabelValues("error").Set(float64(status_error))
-	specturm_archive_tape_status.WithLabelValues("degraded").Set(float64(status_degraded))
+	spectrum_archive_tape_status.WithLabelValues("ok").Set(float64(len(lines) - status_nonok - 1))
+	spectrum_archive_tape_status.WithLabelValues("non-ok").Set(float64(status_nonok))
+	spectrum_archive_tape_status.WithLabelValues("error").Set(float64(status_error))
+	spectrum_archive_tape_status.WithLabelValues("degraded").Set(float64(status_degraded))
 
 	// fmt.Print("Number of tapes with status non-OK: ", status_nonok, "\n")
 	// fmt.Print("Number of tapes with status error: ", status_error, "\n")

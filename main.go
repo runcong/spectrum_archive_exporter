@@ -22,12 +22,12 @@ func registerMetrics() {
 	// reg.MustRegister(myGauge)
 	// reg.MustRegister(myCounter)
 	// reg.MustRegister(diskSizeGauge)
-	reg.MustRegister(specturm_archive_node_status)
-	reg.MustRegister(specturm_archive_tape_status)
-	reg.MustRegister(specturm_archive_drive_status)
-	reg.MustRegister(specturm_archive_pool_used)
-	reg.MustRegister(specturm_archive_pool_available)
-	reg.MustRegister(specturm_archive_task_status)
+	reg.MustRegister(spectrum_archive_node_status)
+	reg.MustRegister(spectrum_archive_tape_status)
+	reg.MustRegister(spectrum_archive_drive_status)
+	reg.MustRegister(spectrum_archive_pool_used)
+	reg.MustRegister(spectrum_archive_pool_available)
+	reg.MustRegister(spectrum_archive_task_status)
 	// reg.MustRegister()
 }
 

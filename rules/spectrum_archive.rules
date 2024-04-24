@@ -1,0 +1,67 @@
+groups:
+  - name: spectrum_archive
+    rules:
+      - alert: spectrum_archive_drive_status
+        annotations:
+          description: "Spectrum Archive has {{ $value }} drive status {{ $labels.status }}."
+          summary: spectrum archive drive has non-ok status
+          priority: P2
+        expr: max_over_time(spectrum_archive_drive_status{status="non-ok"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_tape_status_non-ok
+        annotations:
+          description: "Spectrum Archive has {{ $value }} tapes status {{ $labels.status }}."
+          summary: spectrum archive tape has non-ok status
+          priority: P2
+        expr: max_over_time(spectrum_archive_tape_status{status="non-ok"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_tape_status_error
+        annotations:
+          description: "Spectrum Archive has {{ $value }} tapes status {{ $labels.status }}."
+          summary: spectrum archive tape has error status
+          priority: P2
+        expr: max_over_time(spectrum_archive_tape_status{status="error"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_tape_status_degraded
+        annotations:
+          description: "Spectrum Archive has {{ $value }} tapes status {{ $labels.status }}."
+          summary: spectrum archive tape has degraded status
+          priority: P2
+        expr: max_over_time(spectrum_archive_tape_status{status="degraded"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_task_status_non-running
+        annotations:
+          description: "Spectrum Archive has {{ $value }} task status {{ $labels.status }}."
+          summary: spectrum archive task has non-running status
+          priority: P2
+        expr: max_over_time(spectrum_archive_task_status{status="non-running"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_task_status_failed
+        annotations:
+          description: "Spectrum Archive has {{ $value }} task status {{ $labels.status }}."
+          summary: spectrum archive task has failed status
+          priority: P2
+        expr: max_over_time(spectrum_archive_task_status{status="failed"}[60m]) > 0
+        labels:
+          severity: critical
+      - alert: spectrum_archive_pool
+        annotations:
+          description: "Spectrum Archive has pool {{ $labels.pool_name }} available capacity {{ $value }}% ."
+          summary: Spectrum Archive has pool {{ $labels.pool_name }} available capacity below 10%.
+          priority: P2
+        expr: (spectrum_archive_pool_available * 100/(spectrum_archive_pool_used + spectrum_archive_pool_available)) < 10
+        labels:
+          severity: critical
+      - alert: spectrum_archive_node_status
+        annotations:
+          description: "Spectrum Archive has {{ $value }} node {{ $labels.node_name }} status {{ $labels.status }}."
+          summary: spectrum archive node has non-available status
+          priority: P2
+        expr: count(last_over_time(spectrum_archive_node_status{status!="available"}[60m]) ) > 0
+        labels:
+          severity: critical
