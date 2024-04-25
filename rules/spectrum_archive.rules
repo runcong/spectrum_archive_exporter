@@ -54,7 +54,7 @@ groups:
           description: "Spectrum Archive has pool {{ $labels.pool_name }} available capacity {{ $value }}% ."
           summary: Spectrum Archive has pool {{ $labels.pool_name }} available capacity below 10%.
           priority: P2
-        expr: (spectrum_archive_pool_available * 100/(spectrum_archive_pool_used + spectrum_archive_pool_available)) < 10
+        expr: (max_over_time(spectrum_archive_pool_available[1h]) * 100 / (max_over_time(spectrum_archive_pool_used [1h])+ max_over_time(spectrum_archive_pool_available[1h]))) < 10
         labels:
           severity: critical
       - alert: spectrum_archive_node_status
