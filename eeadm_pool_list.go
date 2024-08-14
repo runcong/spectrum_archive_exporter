@@ -40,7 +40,7 @@ func pool_status() {
 		// Extract the tape status
 		if line != "" {
 			pool_name := strings.Fields(line)[0]
-			pool_used := strings.Fields(line)[3]
+			pool_used := strings.Fields(line)[2]
 			pool_available := strings.Fields(line)[3]
 
 			poolUsedFloat, err := strconv.ParseFloat(pool_used, 64)
