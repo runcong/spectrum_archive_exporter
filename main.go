@@ -20,6 +20,7 @@ func registerMetrics() {
 	reg.MustRegister(spectrum_archive_node_status)
 	reg.MustRegister(spectrum_archive_tape_status)
 	reg.MustRegister(spectrum_archive_drive_status)
+	reg.MustRegister(spectrum_archive_pool_usable)
 	reg.MustRegister(spectrum_archive_pool_used)
 	reg.MustRegister(spectrum_archive_pool_available)
 	reg.MustRegister(spectrum_archive_task_status)

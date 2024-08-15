@@ -9,6 +9,11 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 )
 
+var spectrum_archive_pool_usable = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Name: "spectrum_archive_pool_Usable",
+	Help: "Spectrum Archive Pool Usable in TB (eeadm pool list)",
+}, []string{"pool_name"})
+
 var spectrum_archive_pool_used = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 	Name: "spectrum_archive_pool_used",
 	Help: "Spectrum Archive Pool Used in TB (eeadm pool list)",
@@ -40,8 +45,15 @@ func pool_status() {
 		// Extract the tape status
 		if line != "" {
 			pool_name := strings.Fields(line)[0]
+			pool_usable := strings.Fields(line)[1]
 			pool_used := strings.Fields(line)[2]
 			pool_available := strings.Fields(line)[3]
+
+			poolUsableFloat, err := strconv.ParseFloat(pool_usable, 64)
+			if err != nil {
+				fmt.Println("Error converting pool_usable to float64:", err)
+				continue
+			}
 
 			poolUsedFloat, err := strconv.ParseFloat(pool_used, 64)
 			if err != nil {
@@ -54,7 +66,7 @@ func pool_status() {
 				fmt.Println("Error converting pool_available to float64:", err)
 				continue
 			}
-
+			spectrum_archive_pool_usable.WithLabelValues(pool_name).Set(poolUsableFloat)
 			spectrum_archive_pool_used.WithLabelValues(pool_name).Set(poolUsedFloat)
 			spectrum_archive_pool_available.WithLabelValues(pool_name).Set(poolAvailableFloat)
 		}
