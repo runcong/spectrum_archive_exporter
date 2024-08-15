@@ -18,6 +18,7 @@ var reg = prometheus.NewRegistry()
 
 func registerMetrics() {
 	reg.MustRegister(spectrum_archive_node_status)
+	reg.MustRegister(spectrum_archive_tape_state)
 	reg.MustRegister(spectrum_archive_tape_status)
 	reg.MustRegister(spectrum_archive_drive_status)
 	reg.MustRegister(spectrum_archive_pool_usable)
